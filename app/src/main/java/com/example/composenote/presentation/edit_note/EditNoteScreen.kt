@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -58,8 +59,7 @@ fun EditNoteScreen(
 
     Scaffold(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+            .fillMaxSize(),
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
@@ -81,6 +81,7 @@ fun EditNoteScreen(
                 .background(
                     backgroundColor.value
                 )
+                .padding(16.dp)
         ) {
             NoteColor(
                 noteColor = viewModel.noteColor.value,
@@ -105,16 +106,15 @@ fun EditNoteScreen(
                 hint = "Enter a title",
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                textStyle = MaterialTheme.typography.h6
+                textStyle = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.Bold)
             ){
                 viewModel.onEvent(EditNoteEvent.EnteredTitle(it))
             }
-            Spacer(modifier = Modifier.height(8.dp))
             EditNoteTextField(
                 text = state.content,
                 hint = "Enter a content",
                 modifier = Modifier.fillMaxHeight(),
-                singleLine = true,
+                singleLine = false,
                 textStyle = MaterialTheme.typography.body1
             ){
                 viewModel.onEvent(EditNoteEvent.EnteredContent(it))

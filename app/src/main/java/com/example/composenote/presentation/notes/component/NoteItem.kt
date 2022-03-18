@@ -27,13 +27,13 @@ import com.example.composenote.data.model.Note
 fun NoteItem(
     modifier: Modifier = Modifier,
     note: Note,
-    cornerRadius : Dp = 16.dp,
-    cutCornerRadius : Dp = 30.dp,
-    onDeleteClick : () -> Unit
+    cornerRadius: Dp = 16.dp,
+    cutCornerRadius: Dp = 30.dp,
+    onDeleteClick: () -> Unit
 ) {
 
     Box(modifier = modifier) {
-        Canvas(modifier = Modifier.matchParentSize()){
+        Canvas(modifier = Modifier.matchParentSize()) {
             val path = Path().apply {
                 lineTo(size.width - cutCornerRadius.toPx(), 0f)
                 lineTo(size.width, cutCornerRadius.toPx())
@@ -41,7 +41,7 @@ fun NoteItem(
                 lineTo(0f, size.height)
                 close()
             }
-            clipPath(path){
+            clipPath(path) {
                 drawRoundRect(
                     size = size,
                     color = Color(note.color),
@@ -55,10 +55,14 @@ fun NoteItem(
                 )
             }
         }
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .padding(end = 32.dp)) {
             Text(
                 text = note.title,
                 style = MaterialTheme.typography.h6,
+                color = Color.Black,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -66,17 +70,18 @@ fun NoteItem(
             Text(
                 text = note.content,
                 style = MaterialTheme.typography.body1,
+                color = Color.Black,
                 maxLines = 10,
                 overflow = TextOverflow.Ellipsis
             )
         }
         IconButton(
             onClick = onDeleteClick,
+            modifier = Modifier.align(Alignment.BottomEnd),
         ) {
             Icon(
                 imageVector = Icons.Default.Delete,
                 contentDescription = "Delete",
-                modifier = Modifier.align(Alignment.BottomEnd),
                 tint = Color.Black
             )
         }

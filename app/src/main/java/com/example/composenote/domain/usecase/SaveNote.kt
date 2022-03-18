@@ -5,7 +5,7 @@ import com.example.composenote.data.model.Note
 import com.example.composenote.domain.repository.NoteRepository
 import javax.inject.Inject
 
-class SaveNote @Inject constructor(private val noteRepository: NoteRepository) {
+class SaveNote (private val noteRepository: NoteRepository) {
     @Throws(InvalidNoteException::class)
     suspend operator fun invoke(note : Note) {
         if (note.title.isBlank()){

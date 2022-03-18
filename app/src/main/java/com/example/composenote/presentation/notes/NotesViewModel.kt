@@ -42,6 +42,7 @@ class NotesViewModel @Inject constructor(
             is NotesEvent.DeleteNote -> {
                 viewModelScope.launch {
                     noteUseCase.deleteNote(notesEvent.note)
+                    currentNote = notesEvent.note
                 }
             }
             is NotesEvent.RestoreNote -> {

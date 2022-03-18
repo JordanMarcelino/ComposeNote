@@ -6,7 +6,7 @@ import com.example.composenote.data.repository.datasource.NoteLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class NoteLocalDataSourceImpl @Inject constructor(
+class NoteLocalDataSourceImpl (
     private val noteDao: NoteDao
 ) : NoteLocalDataSource {
     override fun getNotes(): Flow<List<Note>> = noteDao.getNotes()

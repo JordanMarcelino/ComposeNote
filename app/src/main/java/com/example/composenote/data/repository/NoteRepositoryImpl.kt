@@ -6,7 +6,7 @@ import com.example.composenote.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class NoteRepositoryImpl @Inject constructor(
+class NoteRepositoryImpl(
     private val noteLocalDataSource: NoteLocalDataSource
 ) : NoteRepository {
 

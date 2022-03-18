@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class GetNotes @Inject constructor(private val noteRepository: NoteRepository) {
+class GetNotes (private val noteRepository: NoteRepository) {
     operator fun invoke(noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending)) : Flow<List<Note>> {
         return noteRepository.getNotes().map { note ->
             when(noteOrder.orderType){

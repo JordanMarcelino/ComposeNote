@@ -29,13 +29,14 @@ fun NoteColor(
         items(Note.noteColors) { color ->
             Box(
                 modifier = Modifier
-                    .background(color)
-                    .shadow(5.dp, CircleShape)
                     .size(50.dp)
+                    .shadow(5.dp, CircleShape)
                     .clip(CircleShape)
+                    .background(color)
                     .border(
                         width = 2.dp,
-                        color = if (noteColor == color.toArgb()) Color.Black else Color.Transparent
+                        color = if (noteColor == color.toArgb()) Color.Black else Color.Transparent,
+                        shape = CircleShape
                     )
                     .clickable {
                         onSelected(color.toArgb())
