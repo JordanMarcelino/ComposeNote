@@ -11,4 +11,8 @@ import com.example.composenote.data.model.Note
 )
 abstract class NoteDatabase : RoomDatabase(){
     abstract fun getNoteDao() : NoteDao
+
+    companion object{
+        const val DATABASE_NAME = "notes_db"
+    }
 }
