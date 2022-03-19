@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -26,6 +27,7 @@ import androidx.navigation.NavController
 import com.example.composenote.presentation.notes.component.NoteItem
 import com.example.composenote.presentation.notes.component.OrderSection
 import com.example.composenote.presentation.util.Screen
+import com.example.composenote.util.TestTag.SORT_BUTTON
 import kotlinx.coroutines.launch
 
 @Composable
@@ -107,7 +109,7 @@ fun NotesScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Sort,
-                        contentDescription = null
+                        contentDescription = "Sort"
                     )
                 }
             }
@@ -119,7 +121,9 @@ fun NotesScreen(
                 OrderSection(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp, horizontal = 8.dp),
+                        .padding(vertical = 16.dp, horizontal = 8.dp)
+                        .testTag(SORT_BUTTON)
+                    ,
                     noteOrder = state.noteOrder
                 ) {
                     viewModel.onEvent(NotesEvent.Order(it))
